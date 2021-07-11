@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue !{% endblock %}
+
+{% block body %}
+<!-- Header section -->
+{% include '_partials/_header.html.twig' %}
+<!-- Main section -->
+<main>
+
+    <!-- New member form -->
+    <h2>Ajouter un(e) Argonaute</h2>
+    <div class="container-fluid">
+        <div class="col-lg-8 mx-auto">
+            {{form_start(form)}}
+            <div class="row d-flex">
+                <label>Nom de l'Argonaute</label>
+                <div class="col-sm-6">
+                    {{form_row(form.nom)}}</div>
+                <div class="col-sm-6">{{ form_row(form.submit, { 'label': 'Ajouter' }) }}</div>
+            </div>
+            {{form_end(form)}}
+        </div>
+    </div>
+
+    <!-- Member list -->
+    <h2>Membres de l'équipage</h2>
+    <section class="member-list">
+        {% if team %}
+        <div class="row d-flex">
+
+
+            {% for team in team %}
+            <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4">
+                <div class="member-item">{{ loop.index }} {{team.nom}}</div>
+                <a class="btn btn-danger" href="{{path('delete',{'id': team.id}) }}">Supprimé équipier</a>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="col">Désolé vous avez aucun équipage</div>
+        {% endif %}
+
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>Réalisé par Jason en Anthestérion de l'an 515 avant JC</p>
+</footer>
+{% endblock %}

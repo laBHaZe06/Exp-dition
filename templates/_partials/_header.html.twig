@@ -1,0 +1,16 @@
+<header>
+  <h1>
+    <img src="https://www.wildcodeschool.com/assets/logo_main-e4f3f744c8e717f1b7df3858dce55a86c63d4766d5d9a7f454250145f097c2fe.png" alt="Wild Code School logo" />
+    Les Argonautes
+  </h1>
+</header>
+{% for label, messages in app.flashes %}
+
+<div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
+
+  {% for message in messages %}
+  <p>{{ message }}</p>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+  {% endfor %}
+  {% endfor %}
