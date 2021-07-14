@@ -19,7 +19,7 @@ class HomeController extends AbstractController
     public function index(EquipageRepository $equipageRepository,Request $request,EntityManagerInterface $em): Response
     {
         $team = $equipageRepository->findAll();
-        dump($team);
+       // dump($team);
         $dreamTeam = new Equipage();
         $form = $this->createForm(EquipeFormType::class, $dreamTeam);
         $form->handleRequest($request);
